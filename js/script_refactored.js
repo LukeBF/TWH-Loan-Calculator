@@ -30,7 +30,6 @@ function main()
     const calBtn = document.querySelector("#form-section > form > button")
     //RESET BUTTON
     const resetBtn = document.querySelector("#form-section > form > button:nth-child(4)")
-    
     //LOAN TERM
     const termInput = document.querySelector("#loan-inputs > input:nth-child(3)")
     //RATE
