@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Loan Calculator</title>
+</head>
+<body>
+    <header id="main-header">
+        <h1>LOAN CALCULATOR</h1>
+    </header>
+
+    <section id="form-section">
+        <form>
+            <div>
+                <label class="form-label">Loan Amount</label>
+                <label class="form-label" id="rate">Annual Interest Rate</label>
+                <label class="form-label">Loan Term (years)</label>
+            </div>
+
+            <div id="loan-inputs">
+                <input type="text" placeholder="$">
+                <input type="text" value="5" readonly> 
+                <input type="text">
+            </div> 
+
+            <button type="button" id="click-btn">Calculate</button>
+            <button type="button" id="click-btn">Reset</button>
+        </form>
+    </section>
+
+    <section id="display">
+        <h2></h2>
+        <div>
+            <h3 class="summary"></h3>
+            <h3 class="summary"></h3>
+            <h3 class="summary"></h3>
+            <h3 class="summary"></h3>
+        </div>
+            </section>
+    <script src="js/script_refactored.js"></script>
+</body>
+</html>
