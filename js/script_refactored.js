@@ -6,9 +6,14 @@ const totalPayments = (term)=>{
     return totalPayments;
 }
 
-const mthlyInterest = (rate)=>{
-    const ANNUAL_INT_RATE = 5
-    const mthlyRate = (ANNUAL_INT_RATE / 100)/MONTHS_IN_YEAR;
+//CONVERT THE TOTAL PAYMENTS IN MONTHS TO A NEGATIVE EXPONENT
+const convertOperator = (totalPayments)=>{
+    return -Math.abs(totalPayments);
+}
+
+function mthlyInterest(rate) {
+    const ANNUAL_INT_RATE = 5;
+    const mthlyRate = (ANNUAL_INT_RATE / 100) / MONTHS_IN_YEAR;
     return mthlyRate;
 }
 
@@ -18,8 +23,10 @@ const newMthlyRate = ()=>{
     return newRate;
 }
 
-const exponent = ()=>{
-    const EXPONENT_VALUE = -60
+const exponent = (payments)=>{
+    //LOAN TERM
+    const termInput = document.querySelector("#loan-inputs > input:nth-child(3)").value;
+    const EXPONENT_VALUE = convertOperator(totalPayments(termInput))
     const sumRaised = 1-(Math.pow(newMthlyRate(), EXPONENT_VALUE));
     return sumRaised;
 }
@@ -29,24 +36,24 @@ const clear = ()=>{
     const loanAmt = document.querySelector("#loan-inputs > input");
     //LOAN TERM
     const termInput = document.querySelector("#loan-inputs > input:nth-child(3)");
-    
 }
+
 
 function main()
 {
     //CALCULATE BUTTON
-    const calBtn = document.querySelector("#form-section > form > button")
+    const calBtn = document.querySelector("#form-section > form > button");
     //RESET BUTTON
-    const resetBtn = document.querySelector("#form-section > form > button:nth-child(4)")
+    const resetBtn = document.querySelector("#form-section > form > button:nth-child(4)");
     //LOAN TERM
-    const termInput = document.querySelector("#loan-inputs > input:nth-child(3)")
+    const termInput = document.querySelector("#loan-inputs > input:nth-child(3)");
     //RATE
-    const annualIntRate = document.querySelector("#loan-inputs > input:nth-child(2)")
+    const annualIntRate = document.querySelector("#loan-inputs > input:nth-child(2)");
     //LOAN AMOUNT
-    const loanAmt = document.querySelector("#loan-inputs > input")
+    const loanAmt = document.querySelector("#loan-inputs > input");
 
     
-    
+  
 
     //ELEMENTS TO PRINT WHEN THE BUTTON IS CLICKED
     const heading2 = document.querySelector(".display > h2");
@@ -63,10 +70,8 @@ function main()
         const amount = parseInt(loanAmt.value);
 
         const value = mthlyInterest(rate) * amount;
-        console.log(value)
 
         const mthlyInstalment = value / exponent();
-        console.log(mthlyInstalment)
 
         //DISPLAY AFTER THE CALCULATE BUTTON IS CLICKED
         heading2.innerText  = "Loan Summary";
@@ -85,8 +90,8 @@ function main()
     resetBtn.addEventListener("click", (clear)=>{
         loanAmt.value = "";
         termInput.value = "";
+               
     })
 
-    
 }
 main();
