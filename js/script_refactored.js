@@ -19,9 +19,17 @@ const newMthlyRate = ()=>{
 }
 
 const exponent = ()=>{
-    const EXPONENT_VALUE = -60;
+    const EXPONENT_VALUE = -60
     const sumRaised = 1-(Math.pow(newMthlyRate(), EXPONENT_VALUE));
     return sumRaised;
+}
+
+const clear = ()=>{
+    //LOAN AMOUNT
+    const loanAmt = document.querySelector("#loan-inputs > input");
+    //LOAN TERM
+    const termInput = document.querySelector("#loan-inputs > input:nth-child(3)");
+    
 }
 
 function main()
@@ -36,12 +44,14 @@ function main()
     const annualIntRate = document.querySelector("#loan-inputs > input:nth-child(2)")
     //LOAN AMOUNT
     const loanAmt = document.querySelector("#loan-inputs > input")
+
+    
     
 
     //ELEMENTS TO PRINT WHEN THE BUTTON IS CLICKED
-    const heading2 = document.querySelector("#display > h2");
+    const heading2 = document.querySelector(".display > h2");
 
-    const summaryHeadings = document.querySelectorAll("#display h3")
+    const summaryHeadings = document.querySelectorAll(".display h3")
    
     //EVENT LISTENERS
     calBtn.addEventListener("click", ()=>{
@@ -53,8 +63,10 @@ function main()
         const amount = parseInt(loanAmt.value);
 
         const value = mthlyInterest(rate) * amount;
+        console.log(value)
 
         const mthlyInstalment = value / exponent();
+        console.log(mthlyInstalment)
 
         //DISPLAY AFTER THE CALCULATE BUTTON IS CLICKED
         heading2.innerText  = "Loan Summary";
@@ -65,18 +77,16 @@ function main()
         //PRINT LOAN DETAIL SUMMARY
         summaryHeadings[0].innerText = `Loan Amount: $${amount}`;
         summaryHeadings[1].innerText = `Annual Interest Rate: ${rate}`;
-        summaryHeadings[2].innerText = `Loan Term (months): ${payments}`;
+        summaryHeadings[2].innerText = `Loan Term (months): ${totalPayments(payments)}`;
         summaryHeadings[3].innerText = `Monthly Instalments: $${mthlyInstalment.toFixed(2)}`;
-
-    //CLEAR FIELDS
-    // resetBtn.addEventListener("click", ()=>{
-    //     alert("Test")
-        
-    //     // amount.value = "";
-    //     // payments.value = "";
-    // })
-
-
     })
+
+    //CLEAR FIELDS    
+    resetBtn.addEventListener("click", (clear)=>{
+        loanAmt.value = "";
+        termInput.value = "";
+    })
+
+    
 }
 main();
