@@ -36,6 +36,8 @@ const clear = ()=>{
     const loanAmt = document.querySelector("#loan-inputs > input");
     //LOAN TERM
     const termInput = document.querySelector("#loan-inputs > input:nth-child(3)");
+
+    
 }
 
 
@@ -52,13 +54,14 @@ function main()
     //LOAN AMOUNT
     const loanAmt = document.querySelector("#loan-inputs > input");
 
-    
-  
+
 
     //ELEMENTS TO PRINT WHEN THE BUTTON IS CLICKED
     const heading2 = document.querySelector(".display > h2");
 
     const summaryHeadings = document.querySelectorAll(".display h3")
+
+    const display = document.querySelector(".display")
    
     //EVENT LISTENERS
     calBtn.addEventListener("click", ()=>{
@@ -79,6 +82,8 @@ function main()
         heading2.style.textAlign = "center";
         heading2.style.fontSize = "250%";
 
+        display.style.visibility = "visible";
+
         //PRINT LOAN DETAIL SUMMARY
         summaryHeadings[0].innerText = `Loan Amount: $${amount}`;
         summaryHeadings[1].innerText = `Annual Interest Rate: ${rate}`;
@@ -90,6 +95,15 @@ function main()
     resetBtn.addEventListener("click", (clear)=>{
         loanAmt.value = "";
         termInput.value = "";
+        
+        // summaryHeadings[0].innerText = `Loan Amount: $ `;
+        // summaryHeadings[1].innerText = `Annual Interest Rate: `;
+        // summaryHeadings[2].innerText = `Loan Term (months): `;
+        // summaryHeadings[3].innerText = `Monthly Instalments: `;
+
+        display.style.visibility = "hidden"
+
+        loanAmt.focus();
                
     })
 
